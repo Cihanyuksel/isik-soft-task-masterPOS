@@ -1,3 +1,4 @@
+import React from "react";
 import { Product } from "../types";
 import { StatusBadge } from "./StatusBadge";
 import { PiDotsThreeCircleThin } from "react-icons/pi";
@@ -20,17 +21,17 @@ const ProductTableBody: React.FC<ProductTableContentProps> = ({
   handleSelectAll,
 }) => {
   return (
-    <table className="w-full table-fixed">
+    <table className="w-full table-fixed overflow-x-auto">
       <colgroup>
-        <col style={{ width: "60px" }} />
-        <col style={{ width: "200px" }} />
-        <col style={{ width: "250px" }} />
-        <col style={{ width: "90px" }} />
-        <col style={{ width: "70px" }} />
-        <col style={{ width: "120px" }} />
-        <col style={{ width: "120px" }} />
-        <col style={{ width: "90px" }} />
-        <col style={{ width: "60px" }} />
+        <col className="w-[50px]" />
+        <col className="w-[150px]" />
+        {/* <col className="w-[150px]" />  */}
+        <col className="w-[80px]" />
+        <col className="w-[60px]" />
+        <col className="w-[100px]" />
+        <col className="w-[80px]" />
+        <col className="w-[100px]" />
+        <col className="w-[100px]" />
       </colgroup>
 
       <thead className="text-left bg-gray-50 text-neutral-500">
@@ -45,7 +46,7 @@ const ProductTableBody: React.FC<ProductTableContentProps> = ({
             />
           </th>
           <th className="px-4 py-3 max-sm:w-full">Product</th>
-          <th className="px-4 py-3 max-sm:hidden">Description</th>
+          {/* <th className="px-4 py-3">Description</th> */}
           <th className="px-4 py-3 max-sm:hidden">Amount</th>
           <th className="px-4 py-3 max-sm:hidden">Stock</th>
           <th className="px-4 py-3 max-sm:hidden">Barcode</th>
@@ -66,7 +67,10 @@ const ProductTableBody: React.FC<ProductTableContentProps> = ({
           </tr>
         ) : (
           filteredProducts.map((product) => (
-            <tr key={product.id} className="border-b border-neutral-100 hover:bg-gray-50 transition ease-in-out group">
+            <tr
+              key={product.id}
+              className="border-b border-neutral-100 hover:bg-gray-50 transition ease-in-out group"
+            >
               <td
                 className={`px-4 py-5 ${
                   selectedProducts.includes(product.id)
@@ -98,9 +102,9 @@ const ProductTableBody: React.FC<ProductTableContentProps> = ({
                 </div>
               </td>
 
-              <td className="max-w-[250px] px-4 py-5 dark:text-zinc-300 group-hover:dark:text-zinc-700 cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis max-sm:hidden">
+              {/* <td className="max-w-[250px] px-4 py-5 dark:text-zinc-300 group-hover:dark:text-zinc-700 cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis ">
                 {product.description}
-              </td>
+              </td> */}
               <td className="px-4 py-5 dark:text-zinc-300 group-hover:dark:text-zinc-700 cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis max-sm:hidden">
                 ${product.price.toFixed(2)}
               </td>

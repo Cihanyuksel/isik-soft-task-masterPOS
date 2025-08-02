@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import React from "react";
 function ProductTablePagination({ currentPage, totalPages, setCurrentPage }) {
   useEffect(() => {
     window.scrollTo({ top: 100, left: 100, behavior: "smooth" });
@@ -16,7 +16,9 @@ function ProductTablePagination({ currentPage, totalPages, setCurrentPage }) {
             key={page}
             onClick={() => setCurrentPage(page)}
             className={`w-9 h-9 rounded-md border text-sm cursor-pointer ${
-              currentPage === page ? "bg-indigo-600 text-white" : "bg-white text-zinc-500 border-gray-200"
+              currentPage === page
+                ? "bg-indigo-600 text-white"
+                : "bg-white text-zinc-500 border-gray-200"
             }`}
           >
             {page}

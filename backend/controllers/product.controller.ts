@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Product } from "../models/product.model";
 import { paginate } from "../utils/paginate";
 
+// GET PRODUCTS
 export const getProducts = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const totalItems = await Product.countDocuments();

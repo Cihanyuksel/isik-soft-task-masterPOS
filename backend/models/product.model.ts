@@ -1,19 +1,3 @@
-// import mongoose from "mongoose";
-
-// const productSchema = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   price: Number,
-//   productCode: String,
-//   barcode: String,
-//   stock: Number,
-//   status: Boolean,
-//   category: String,
-//   description: String,
-//   imageUrl: String,
-// });
-
-// export const Product = mongoose.model("Product", productSchema);
-
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IProduct extends Document {
@@ -29,7 +13,6 @@ export interface IProduct extends Document {
 }
 
 const productSchema = new Schema<IProduct>({
-  // id: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   price: { type: Number, required: true },
   productCode: { type: String, required: true },
