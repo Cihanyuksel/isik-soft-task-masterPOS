@@ -4,7 +4,6 @@ import { SearchBox } from "./SearchBox";
 import { MenuSection } from "./MenuSection";
 import { IoIosClose } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
-import { useAppSelector } from "../utils/hooks";
 
 interface SidebarProps {
   menuSectionsData: MenuSectionType[];
@@ -14,9 +13,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const activeId = useAppSelector((state) => state.menu.activeId);
-
-  // console.log("ACTIVE ID " + activeId);
   const toggleSidebar = () => setIsCollapsed((prev) => !prev);
   const toggleMobileSidebar = () => setMobileOpen((prev) => !prev);
 
@@ -50,15 +46,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
 
         <nav className="flex flex-col gap-6 px-4 py-4 max-h-[80vh] overflow-y-auto">
           <SearchBox />
+          {/* activeId={activeId} propsa gelecek */}
           {menuSectionsData.map((section, index) => (
-            <MenuSection key={index} section={section} isCollapsed={false} activeId={activeId} />
+            <MenuSection key={index} section={section} isCollapsed={false} />
           ))}
         </nav>
       </aside>
       {/* END Mobile Sidebar - Top Drop Down */}
 
       {/* Overlay (mobile) */}
-      {mobileOpen && <div className="sm:hidden fixed inset-0 bg-black/40 z-30" onClick={toggleMobileSidebar} />}
+      {mobileOpen && (
+        <div
+          className="sm:hidden fixed inset-0 bg-black/40 z-30"
+          onClick={toggleMobileSidebar}
+        />
+      )}
 
       {/* Desktop Sidebar */}
       <aside
@@ -94,8 +96,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
               <SearchBox />
             </div>
           )}
+          {/* propsa {/*activeId={activeId}*/}
           {menuSectionsData.map((section, index) => (
-            <MenuSection key={index} section={section} isCollapsed={isCollapsed} activeId={activeId} />
+            <MenuSection
+              key={index}
+              section={section}
+              isCollapsed={isCollapsed}
+            />
           ))}
         </nav>
       </aside>
