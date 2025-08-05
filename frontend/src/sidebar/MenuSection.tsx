@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { MenuSectionType } from "../types";
 import { MenuItem } from "./MenuItem";
-// import { useAppDispatch } from "../utils/hooks";
-// import { toggleMenu } from "../features/menu/menuSlice";
 
 interface MenuSectionProps {
   section: MenuSectionType;

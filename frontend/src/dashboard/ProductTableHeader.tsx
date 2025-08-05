@@ -1,5 +1,12 @@
+import React from "react";
 import { IconButton } from "../compoenets/IconButton";
-import { FiDownload, FiFilter, FiMoreVertical, FiRefreshCw } from "react-icons/fi";
+import {
+  FiDownload,
+  FiFilter,
+  FiMoreVertical,
+  FiRefreshCw,
+  FiSearch,
+} from "react-icons/fi";
 import { IoIosAddCircleOutline, IoIosCloseCircleOutline } from "react-icons/io";
 
 function ProductTableHeader({
@@ -7,19 +14,22 @@ function ProductTableHeader({
   handleSearch,
   setFilterState,
   refetch,
-  filteredProducts,
+  // filteredProducts,
   setDropdownOpen,
   dropdownOpen,
   exportToExcel,
   products,
 }) {
   return (
-    <header className="flex justify-between items-center px-8 py-6 border-b border-gray-200 max-md:flex-col max-md:gap-4">
-      <div className="flex items-center gap-4">
-        <h2 className="text-xl font-bold text-neutral-800 dark:text-zinc-200">All Products</h2>
+    <header className="flex justify-between px-8 py-6 border-b border-gray-200  ">
+      {/* Desktop */}
+      <div className="hidden md:flex  items-center gap-4">
+        <h2 className="text-xl font-bold text-neutral-800 dark:text-zinc-200">
+          All Products
+        </h2>
       </div>
 
-      <div className="flex gap-4 items-center max-md:flex-wrap max-md:justify-between">
+      <div className="flex justify-center items-center gap-4">
         <div className="flex gap-3 items-center px-4 py-3 bg-white rounded-lg border border-gray-200">
           <i className="ti ti-search text-base text-zinc-500" />
           <input
@@ -29,19 +39,31 @@ function ProductTableHeader({
             value={filterState.searchTerm}
             onChange={handleSearch}
           />
-          <button className="cursor-pointer" onClick={() => setFilterState((prev) => ({ ...prev, searchTerm: "" }))}>
+          <button
+            className="cursor-pointer"
+            onClick={() =>
+              setFilterState((prev) => ({ ...prev, searchTerm: "" }))
+            }
+          >
             <IconButton
-              icon={<IoIosCloseCircleOutline className="text-zinc-500 text-xl" />}
+              icon={
+                <IoIosCloseCircleOutline className="text-zinc-500 text-xl" />
+              }
               onClick={() => refetch()}
             />
           </button>
         </div>
         <div className="flex gap-2 relative">
-          <IconButton icon={<FiRefreshCw className="text-zinc-500 text-base" />} onClick={() => refetch()} />
+          <IconButton
+            icon={<FiRefreshCw className="text-zinc-500 text-base" />}
+            onClick={() => refetch()}
+          />
 
           <IconButton
             icon={<FiDownload className="text-zinc-500 text-base" />}
-            onClick={() => exportToExcel(products)}
+            onClick={async () => {
+              await exportToExcel(products);
+            }}
           />
 
           <div className="relativ">
@@ -54,15 +76,19 @@ function ProductTableHeader({
               <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded shadow-lg z-10">
                 <button
                   className="block cursor-pointer w-full text-left px-4 py-2 text-neutral-700 hover:bg-gray-100"
-                  onClick={() => setFilterState((prev) => ({ ...prev, sortOrder: "asc" }))}
+                  onClick={() =>
+                    setFilterState((prev) => ({ ...prev, sortOrder: "asc" }))
+                  }
                 >
-                  Fiyat Artan
+                  Low to High
                 </button>
                 <button
                   className="block cursor-pointer w-full text-left px-4 py-2 text-neutral-700 hover:bg-gray-100"
-                  onClick={() => setFilterState((prev) => ({ ...prev, sortOrder: "desc" }))}
+                  onClick={() =>
+                    setFilterState((prev) => ({ ...prev, sortOrder: "desc" }))
+                  }
                 >
-                  Fiyat Azalan
+                  High to Low
                 </button>
                 <button
                   className="block cursor-pointer w-full text-left px-4 py-2 text-neutral-700 hover:bg-gray-100"
@@ -71,16 +97,20 @@ function ProductTableHeader({
                     setDropdownOpen(false);
                   }}
                 >
-                  X
+                  Reset
                 </button>
               </div>
             )}
           </div>
 
-          <IconButton icon={<FiMoreVertical className="text-zinc-500 text-base" />} />
+          <IconButton
+            icon={<FiMoreVertical className="text-zinc-500 text-base" />}
+          />
         </div>
         <button className="flex items-center justify-between gap-5 px-5 py-3 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 cursor-pointer">
-          <IconButton icon={<IoIosAddCircleOutline className="text-indigo-600 text-xl" />} />
+          <IconButton
+            icon={<IoIosAddCircleOutline className="text-indigo-600 text-xl" />}
+          />
           <span>Add New Product</span>
         </button>
       </div>

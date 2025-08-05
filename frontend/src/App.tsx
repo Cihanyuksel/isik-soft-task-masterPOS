@@ -10,7 +10,7 @@ import ProductTableContainer from "./dashboard/ProductTableContainer";
 
 export const App: React.FC = () => {
   return (
-    <main className="flex flex-col min-h-screen lg:flex-row">
+    <main className="flex flex-col min-h-screen md:flex-row">
       <Sidebar menuSectionsData={menuSections} />
       <div className="w-full flex-1 flex flex-col gap-8 px-6 py-5 bg-[#F6F6F6] max-md:px-4 max-sm:px-2">
         <Header />

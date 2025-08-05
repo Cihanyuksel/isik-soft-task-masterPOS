@@ -27,7 +27,7 @@ export const ThemeToggle: React.FC = () => {
   }, [theme, isDark]);
 
   return (
-    <div className="w-1/4 flex justify-center mr-10">
+    <div className="w-1/4  justify-center mr-10 hidden xl:flex">
       <div className="w-full flex items-center justify-center">
         <MdOutlineWbSunny size={28} color="#ccc" />
       </div>

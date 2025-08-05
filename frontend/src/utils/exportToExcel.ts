@@ -1,12 +1,7 @@
-import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+export async function exportToExcel(data, fileName = "products.xlsx") {
+  const XLSX = await import("xlsx");
+  const { saveAs } = await import("file-saver");
 
-export function exportToExcel(data, fileName = "products.xlsx") {
-  console.log("Exporting data:", data);
-  if (!data || data.length === 0) {
-    alert("Export edilecek veri yok!");
-    return;
-  }
   // 1. Data’yı worksheet formatına çevir
   const worksheet = XLSX.utils.json_to_sheet(data);
 

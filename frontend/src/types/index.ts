@@ -1,3 +1,5 @@
+import React from "react";
+
 // API Response type defination
 export interface ProductResponse {
   message: string;
@@ -43,6 +45,7 @@ export interface MenuItemType {
 
 // Menu section type definition
 export interface MenuSectionType {
+  id: number;
   title: string;
   items: MenuItemType[];
 }

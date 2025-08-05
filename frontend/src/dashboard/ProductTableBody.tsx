@@ -47,12 +47,12 @@ const ProductTableBody: React.FC<ProductTableContentProps> = ({
           </th>
           <th className="px-4 py-3 max-sm:w-full">Product</th>
           {/* <th className="px-4 py-3">Description</th> */}
-          <th className="px-4 py-3 max-sm:hidden">Amount</th>
+          <th className="px-4 py-3">Price</th>
           <th className="px-4 py-3 max-sm:hidden">Stock</th>
           <th className="px-4 py-3 max-sm:hidden">Barcode</th>
           <th className="px-4 py-3 max-sm:hidden">Product Code</th>
           <th className="px-4 py-3 max-sm:hidden">Status</th>
-          <th className="px-4 py-3 max-sm:hidden text-center">Actions</th>
+          <th className="px-4 py-3 max-sm:hidden">Actions</th>
         </tr>
       </thead>
 

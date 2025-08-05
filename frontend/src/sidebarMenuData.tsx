@@ -24,6 +24,7 @@ import { MenuSectionType } from "./types";
 
 export const menuSections: MenuSectionType[] = [
   {
+    id: 1,
     title: "MAIN MENU",
     items: [
       {
@@ -74,6 +75,7 @@ export const menuSections: MenuSectionType[] = [
     ],
   },
   {
+    id: 2,
     title: "ANALYTICS", // New Section
     items: [
       {
@@ -116,6 +118,7 @@ export const menuSections: MenuSectionType[] = [
   },
 
   {
+    id: 3,
     title: "APPS", // New Section
     items: [
       {
@@ -137,6 +140,7 @@ export const menuSections: MenuSectionType[] = [
     ],
   },
   {
+    id: 4,
     title: "SETTINGS",
     items: [
       {
@@ -153,12 +157,6 @@ export const menuSections: MenuSectionType[] = [
         id: "18",
         icon: <FiLogOut />, // Icon for Log Out
         label: "Log Out",
-        hasChildren: true,
-        children: [
-          { id: "30", icon: "", label: "Rabia" },
-          { id: "31", icon: <IoIosHeart />, label: "" }, // Assuming these from original code
-          { id: "32", icon: "", label: "Cihan" }, // Assuming these from original code
-        ],
       },
     ],
   },

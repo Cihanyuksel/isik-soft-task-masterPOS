@@ -66,7 +66,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
   const allSelected =
     filteredProducts.length > 0 &&
     selectedProducts.length === filteredProducts.length;
-  console.log(selectedProducts);
+  // console.log(selectedProducts);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPage(currentPage);
@@ -74,8 +74,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
   };
 
   if (isLoading) return <p className="p-100">Loading...</p>;
-  if (isError)
-    return <p className="p-4 text-red-600">Failed to load products.</p>;
+  if (isError) return <p className="p-4 text-red-600">Failed to load</p>;
 
   return (
     <section className="flex flex-col bg-white rounded-xl shadow-2xl overflow-hidden dark:bg-neutral-800">
@@ -98,7 +97,6 @@ const ProductTable: React.FC<ProductTableProps> = ({
         handleSelectAll={handleSelectAll}
         allSelected={allSelected}
       />
-
       <ProductTablePagination
         currentPage={currentPage}
         totalPages={totalPages}

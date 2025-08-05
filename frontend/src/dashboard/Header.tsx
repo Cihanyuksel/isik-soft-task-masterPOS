@@ -1,28 +1,24 @@
 import React from "react";
 import { ThemeToggle } from "../compoenets/ThemeToggle";
+// ICON
 import { TfiWorld } from "react-icons/tfi";
 import { IoMdNotificationsOutline, IoIosArrowDown } from "react-icons/io";
 import { MdMailOutline } from "react-icons/md";
+import { FiMenu } from "react-icons/fi";
+import { ProductHeader } from "../compoenets/ProductHeader";
 
 export const Header: React.FC = () => {
   return (
-    <header className="h-24 w-full flex items-center justify-around p-3 bg-white rounded-xl dark:bg-neutral-800 dark:text-white">
-      <div className="w-1/2 min-w-[150px] flex flex-col gap-2 p-0 m-0">
-        <h1 className="p-0 m-0 text-2xl font-bold text-neutral-800 dark:text-white">
-          Products
-        </h1>
-        <p className="p-0 m-0 text-base text-zinc-500 dark:text-white">
-          Manage your products
-        </p>
-      </div>
-
-      <div className="w-1/2 flex items-center justify-around p-0 m-0 max-sm:hidden">
+    <header className="h-24 w-full flex items-center justify-around p-3 bg-white rounded-xl md:justify-end dark:bg-neutral-800 dark:text-white">
+      <ProductHeader size="md" />
+      <ProductHeader size="lg" />
+      <div className="w-1/2 flex items-center justify-around p-0 m-0 max-sm:hidden ">
         <ThemeToggle />
-        <div className="">
-          <span className="p-0 m-0 w-px h-14 rounded-lg opacity-50 bg-stone-300 block" />
+        <div>
+          <span className="p-0 m-0 w-px h-14 rounded-lg opacity-50 bg-stone-300 hidden xl:block" />
         </div>
 
-        <div className="w-1/4 min-w-[150px] flex items-center justify-center gap-3 p-0 m-0 max-sm:gap-4">
+        <div className="w-1/4 min-w-[150px] items-center justify-center gap-3 p-0 m-0 max-sm:gap-4 hidden xl:flex   ">
           <div className="w-7 h-7 flex items-center justify-center">
             <TfiWorld size={24} color="#ccc" />
           </div>
@@ -47,7 +43,7 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-1/4 min-w-[200px] flex gap-3 items-center p-0 m-0">
+        <div className="w-1/4 min-w-[200px] flex gap-3 items-center p-0 m-0 ">
           <div className="flex items-center p-0 m-0">
             <img
               src="./public/profile-image.jpg"
@@ -68,6 +64,11 @@ export const Header: React.FC = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="hidden md:flex xl:hidden p-4">
+        <button className="cursor-pointer">
+          <FiMenu size={32} />
+        </button>
       </div>
     </header>
   );

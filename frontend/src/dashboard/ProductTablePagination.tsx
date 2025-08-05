@@ -1,29 +1,105 @@
-import { useEffect } from "react";
 import React from "react";
+
 function ProductTablePagination({ currentPage, totalPages, setCurrentPage }) {
-  useEffect(() => {
-    window.scrollTo({ top: 100, left: 100, behavior: "smooth" });
-  }, [currentPage]);
+  const generatePageNumbers = () => {
+    const pages: (number | "...")[] = [];
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (currentPage <= 3) {
+        pages.push(1, 2, 3, "...", totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1, "...", totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(
+          1,
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages
+        );
+      }
+    }
+    return pages;
+  };
+
+  const goToFirst = () => setCurrentPage(1);
+  const goToPrevious = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+  const goToNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+  const goToLast = () => setCurrentPage(totalPages);
 
   return (
-    <footer className="flex justify-between items-center px-8 py-4 border-t text-sm text-zinc-500">
-      <span>
+    <footer className="flex justify-between items-center px-4 sm:px-8 py-4 border-t text-sm text-zinc-500 overflow-x-auto">
+      <span className="whitespace-nowrap">
         Page {currentPage} of {totalPages}
       </span>
-      <div className="flex gap-2 overflow-x-auto">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`w-9 h-9 rounded-md border text-sm cursor-pointer ${
-              currentPage === page
-                ? "bg-indigo-600 text-white"
-                : "bg-white text-zinc-500 border-gray-200"
-            }`}
-          >
-            {page}
-          </button>
-        ))}
+      <div className="flex gap-1 sm:gap-2">
+        {/* İlk sayfa */}
+        <button
+          onClick={goToFirst}
+          disabled={currentPage === 1}
+          className="w-9 h-9 rounded-md border bg-white text-zinc-500 border-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          «
+        </button>
+
+        {/* Önceki sayfa */}
+        <button
+          onClick={goToPrevious}
+          disabled={currentPage === 1}
+          className="w-9 h-9 rounded-md border bg-white text-zinc-500 border-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          ‹
+        </button>
+
+        {/* Sayfa numaraları */}
+        {generatePageNumbers().map((item, index) =>
+          item === "..." ? (
+            <span
+              key={`ellipsis-${index}`}
+              className="w-9 h-9 flex items-center justify-center"
+            >
+              ...
+            </span>
+          ) : (
+            <button
+              key={item}
+              onClick={() => setCurrentPage(item)}
+              className={`w-9 h-9 rounded-md border text-sm cursor-pointer ${
+                currentPage === item
+                  ? "bg-indigo-600 text-white "
+                  : "bg-white text-zinc-500 border-gray-200"
+              }`}
+            >
+              {item}
+            </button>
+          )
+        )}
+
+        {/* Sonraki sayfa */}
+        <button
+          onClick={goToNext}
+          disabled={currentPage === totalPages}
+          className="w-9 h-9 rounded-md border bg-white text-zinc-500 border-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          ›
+        </button>
+
+        {/* Son sayfa */}
+        <button
+          onClick={goToLast}
+          disabled={currentPage === totalPages}
+          className="w-9 h-9 rounded-md border bg-white text-zinc-500 border-gray-200 disabled:opacity-50 cursor-pointer"
+        >
+          »
+        </button>
       </div>
     </footer>
   );

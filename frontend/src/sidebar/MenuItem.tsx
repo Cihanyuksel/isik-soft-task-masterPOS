@@ -3,11 +3,11 @@ import { MenuItemType } from "../types";
 import { NotificationBadge } from "../compoenets/NotificationBadge";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { setActiveId, toggleMenu } from "../features/menu/menuSlice";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 interface MenuItemProps {
   item: MenuItemType;
   isCollapsed?: boolean;
-  // isActive: boolean;
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -15,17 +15,12 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   isCollapsed = false,
 }) => {
   const dispatch = useAppDispatch();
+  const activeId = useAppSelector((state) => state.menu.activeId);
 
-  // const openMenus = useAppSelector((state) => state.menu.openMenus);
-  const isOpen = useAppSelector(
+  const isOpenChild = useAppSelector(
     (state) => state.menu.openMenus[item.id] ?? false
   );
 
-  const activeId = useAppSelector((state) => state.menu.activeId);
-
-  const isActive = activeId === item.id;
-
-  // const isOpen = openMenus[item.id] || false;
   const handleClick = () => {
     if (activeId !== item.id) {
       dispatch(setActiveId(item.id));
@@ -35,17 +30,23 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     }
   };
 
+  const isActive = activeId === item.id;
+  const showLabel = !isCollapsed;
+  const showNotification = !isCollapsed && item.notificationCount;
+  const showArrow = item.children && !isCollapsed;
+  const showChildrenMenu = !isCollapsed && isOpenChild && item.children;
+
   return (
     <>
       <div
-        className={`flex gap-2.5 items-center p-2.5 h-12 rounded-md cursor-pointer transition-all w-full
+        className={`flex gap-2.5 items-center justify-between p-2.5 h-12 rounded-md cursor-pointer transition-all w-full
         ${isActive ? "bg-[#4F56D3] text-white" : ""}
         ${isCollapsed ? "justify-center" : ""}`}
         onClick={handleClick}
       >
         <div className="flex gap-2.5 items-center">
           <div>{item.icon}</div>
-          {!isCollapsed && (
+          {showLabel && (
             <div
               className={`text-lg ${isActive ? "text-white" : "text-zinc-500"}`}
             >
@@ -53,15 +54,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             </div>
           )}
         </div>
-
-        {!isCollapsed && item.notificationCount && (
+        {showNotification && (
           <NotificationBadge count={item.notificationCount} />
         )}
+        {showArrow && (isOpenChild ? <IoIosArrowUp /> : <IoIosArrowDown />)}
       </div>
 
-      {!isCollapsed && isOpen && item.children && (
+      {showChildrenMenu && (
         <div className="flex flex-col bg-neutral-100 gap-1.5 pl-2.5 dark:bg-neutral-800">
-          {item.children.map((child) => (
+          {item.children?.map((child) => (
             <MenuItem key={child.id} item={child} isCollapsed={isCollapsed} />
           ))}
         </div>
