@@ -5,53 +5,45 @@ import {
   FiFilter,
   FiMoreVertical,
   FiRefreshCw,
-  FiSearch,
 } from "react-icons/fi";
 import { IoIosAddCircleOutline, IoIosCloseCircleOutline } from "react-icons/io";
 
 function ProductTableHeader({
-  filterState,
   handleSearch,
   setFilterState,
   refetch,
-  // filteredProducts,
+  filteredProducts,
   setDropdownOpen,
   dropdownOpen,
   exportToExcel,
   products,
 }) {
   return (
-    <header className="flex justify-between px-8 py-6 border-b border-gray-200  ">
-      {/* Desktop */}
-      <div className="hidden md:flex  items-center gap-4">
+    <header className="flex justify-between px-8 py-6 border-b border-gray-200">
+      <div className="flex items-center gap-4">
         <h2 className="text-xl font-bold text-neutral-800 dark:text-zinc-200">
           All Products
         </h2>
       </div>
 
-      <div className="flex justify-center items-center gap-4">
-        <div className="flex gap-3 items-center px-4 py-3 bg-white rounded-lg border border-gray-200">
+      <div className="flex justify-center items-center gap-4 flex-wrap">
+        <div className="flex gap-3 items-center px-4 py-3 rounded-lg border border-gray-200">
           <i className="ti ti-search text-base text-zinc-500" />
           <input
             type="text"
             placeholder="Search item"
-            className="text-sm border-none text-zinc-500 appearance-none bg-transparent border-0 p-0 m-0 focus:outline-none focus:ring-0"
-            value={filterState.searchTerm}
+            className="text-sm border-none text-zinc-500 appearance-none bg-transparent border-0 p-0 m-0 focus:outline-none focus:ring-0 "
+            value={filteredProducts.searchTerm}
             onChange={handleSearch}
           />
-          <button
-            className="cursor-pointer"
-            onClick={() =>
-              setFilterState((prev) => ({ ...prev, searchTerm: "" }))
-            }
-          >
-            <IconButton
-              icon={
-                <IoIosCloseCircleOutline className="text-zinc-500 text-xl" />
-              }
-              onClick={() => refetch()}
-            />
-          </button>
+
+          <IconButton
+            icon={<IoIosCloseCircleOutline className="text-zinc-500 text-xl" />}
+            onClick={() => {
+              setFilterState((prev) => ({ ...prev, searchTerm: "" }));
+              refetch();
+            }}
+          />
         </div>
         <div className="flex gap-2 relative">
           <IconButton
@@ -108,9 +100,7 @@ function ProductTableHeader({
           />
         </div>
         <button className="flex items-center justify-between gap-5 px-5 py-3 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 cursor-pointer">
-          <IconButton
-            icon={<IoIosAddCircleOutline className="text-indigo-600 text-xl" />}
-          />
+          <IoIosAddCircleOutline className="text-white text-xl" />
           <span>Add New Product</span>
         </button>
       </div>

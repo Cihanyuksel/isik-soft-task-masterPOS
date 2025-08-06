@@ -57,7 +57,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
 
   const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setSelectedProducts(products.map((product) => product.id));
+      setSelectedProducts(products.map((product) => product._id));
     } else {
       setSelectedProducts([]);
     }
@@ -66,7 +66,6 @@ const ProductTable: React.FC<ProductTableProps> = ({
   const allSelected =
     filteredProducts.length > 0 &&
     selectedProducts.length === filteredProducts.length;
-  // console.log(selectedProducts);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPage(currentPage);
@@ -77,9 +76,8 @@ const ProductTable: React.FC<ProductTableProps> = ({
   if (isError) return <p className="p-4 text-red-600">Failed to load</p>;
 
   return (
-    <section className="flex flex-col bg-white rounded-xl shadow-2xl overflow-hidden dark:bg-neutral-800">
+    <section className="flex flex-col bg-white rounded-xl shadow-2xl dark:bg-neutral-800">
       <ProductTableHeader
-        filterState={filterState}
         handleSearch={handleSearch}
         setFilterState={setFilterState}
         refetch={refetch}

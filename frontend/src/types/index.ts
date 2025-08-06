@@ -12,7 +12,7 @@ export interface ProductResponse {
 
 // Product type definition
 export interface Product {
-  id: number;
+  _id: number;
   name: string;
   price: number;
   productCode: string;
