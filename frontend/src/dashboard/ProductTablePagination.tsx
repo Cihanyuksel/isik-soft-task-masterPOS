@@ -1,9 +1,13 @@
 import React from "react";
 
-function ProductTablePagination({ currentPage, totalPages, setCurrentPage }) {
+function ProductTablePagination({
+  currentPage,
+  totalPages,
+  setCurrentPage,
+  products,
+}) {
   const generatePageNumbers = () => {
     const pages: (number | "...")[] = [];
-
     if (totalPages <= 5) {
       for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
@@ -35,10 +39,19 @@ function ProductTablePagination({ currentPage, totalPages, setCurrentPage }) {
   };
   const goToLast = () => setCurrentPage(totalPages);
 
+  const pageSize = 12; // sayfa başına ürün
+  const start = (currentPage - 1) * pageSize + 1;
+  const end = start + products.length - 1;
+
   return (
     <footer className="flex justify-between items-center px-4 sm:px-8 py-4 border-t text-sm text-zinc-500 overflow-x-auto">
-      <span className="whitespace-nowrap">
-        Page {currentPage} of {totalPages}
+      <span className="whitespace-nowrap text-zinc-400">
+        Showing&nbsp;
+        <span className="text-black">
+          {start} - {end}
+        </span>
+        &nbsp;from&nbsp;
+        <span className="text-black">100</span>
       </span>
       <div className="flex gap-1 sm:gap-2">
         {/* İlk sayfa */}

@@ -29,7 +29,7 @@ export const ThemeToggle: React.FC = () => {
   return (
     <div className="w-1/4  justify-center mr-10 hidden xl:flex">
       <div className="w-full flex items-center justify-center">
-        <MdOutlineWbSunny size={28} color="#ccc" />
+        <IoMoonOutline size={28} color="#ccc" />
       </div>
       <div className="w-full flex items-center justify-center mr-5">
         <button
@@ -48,7 +48,7 @@ export const ThemeToggle: React.FC = () => {
       </div>
 
       <div className="w-full flex items-center justify-center">
-        <IoMoonOutline size={28} color="#ccc" />
+        <MdOutlineWbSunny size={28} color="#ccc" />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { TiTick, TiStopwatch, TiTimes } from "react-icons/ti";
+import { TiTick, TiTimes } from "react-icons/ti";
 
 interface StatusBadgeProps {
   status: boolean;

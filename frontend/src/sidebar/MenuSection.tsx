@@ -5,14 +5,13 @@ import { MenuItem } from "./MenuItem";
 interface MenuSectionProps {
   section: MenuSectionType;
   isCollapsed: boolean;
-  onMenuClick?: (key: string) => void;
 }
 export const MenuSection: React.FC<MenuSectionProps> = ({
   section,
   isCollapsed,
 }) => {
   return (
-    <section className="w-full">
+    <section className="w-full border-b border-gray-200">
       {!isCollapsed && (
         <h3 className="mb-4 text-base font-bold tracking-wider text-stone-300">
           {section.title}

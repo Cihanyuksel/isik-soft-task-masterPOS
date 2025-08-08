@@ -99,6 +99,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
         currentPage={currentPage}
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}
+        products={products}
       />
     </section>
   );

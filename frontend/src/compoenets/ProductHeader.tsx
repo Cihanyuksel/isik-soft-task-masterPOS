@@ -7,7 +7,7 @@ export const ProductHeader = ({ size = "lg" }: { size: "lg" | "md" }) => {
     <div
       className={`${
         isLg
-          ? "w-1/2 min-w-[150px] gap-2 p-0 m-0 hidden xl:flex"
+          ? "w-1/2 min-w-[150px] xl:flex-col gap-2 p-0 m-0 hidden xl:flex"
           : "w-full flex flex-col gap-1 p-2 md:hidden"
       }`}
     >

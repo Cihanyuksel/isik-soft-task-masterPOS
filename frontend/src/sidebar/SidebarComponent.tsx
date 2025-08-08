@@ -33,24 +33,27 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
       <SearchBox />
     </div>
   ) : (
-    <button className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center cursor-pointer">
+    <button
+      onClick={toggleSidebar}
+      className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center cursor-pointer"
+    >
       <FiSearch className="text-2xl" />
     </button>
   );
 
-  const headerContent = !isCollapsed ? (
+  const sidebarHeaderContent = !isCollapsed ? (
     <>
       <div className="w-10 h-10 rounded-full bg-black"></div>
-      <div className="flex flex-col gap-1">MasterPOS</div>
+      <div className="flex flex-col gap-1 dark:text-neutral-200">MasterPOS</div>
     </>
   ) : (
     <div className="w-10 h-10 rounded-full bg-black lg:hidden"></div>
   );
 
   const toggleIcon = isCollapsed ? (
-    <FiMenu size={24} />
+    <FiMenu className="dark:text-neutral-200" size={24} />
   ) : (
-    <IoIosClose size={44} />
+    <IoIosClose className="dark:text-neutral-200" size={44} />
   );
 
   return (
@@ -110,7 +113,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
       >
         <header className="flex items-center justify-between border-b border-gray-200 h-[125px] w-full">
           <div className="flex gap-3.5 items-center h-full">
-            {headerContent}
+            {sidebarHeaderContent}
           </div>
 
           <div className="items-center justify-center w-32 h-32 lg:flex hidden">

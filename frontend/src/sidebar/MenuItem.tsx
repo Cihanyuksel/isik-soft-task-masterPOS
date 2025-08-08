@@ -45,10 +45,18 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         onClick={handleClick}
       >
         <div className="flex gap-2.5 items-center">
-          <div>{item.icon}</div>
+          <div
+            className={`text-zinc-500 ${
+              isActive ? "dark:text-neutral-400" : ""
+            }`}
+          >
+            {item.icon}
+          </div>
           {showLabel && (
             <div
-              className={`text-lg ${isActive ? "text-white" : "text-zinc-500"}`}
+              className={`text-lg dark:text-neutral-400 ${
+                isActive ? "text-white" : "text-zinc-500"
+              }`}
             >
               {item.label}
             </div>
@@ -57,11 +65,16 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         {showNotification && (
           <NotificationBadge count={item.notificationCount} />
         )}
-        {showArrow && (isOpenChild ? <IoIosArrowUp /> : <IoIosArrowDown />)}
+        {showArrow &&
+          (isOpenChild ? (
+            <IoIosArrowUp className="dark:text-neutral-400" />
+          ) : (
+            <IoIosArrowDown className="dark:text-neutral-400" />
+          ))}
       </div>
 
       {showChildrenMenu && (
-        <div className="flex flex-col bg-neutral-100 gap-1.5 pl-2.5 dark:bg-neutral-800">
+        <div className="flex flex-col bg-neutral-100 gap-1.5 pl-2.5 dark:bg-neutral-700 ">
           {item.children?.map((child) => (
             <MenuItem key={child.id} item={child} isCollapsed={isCollapsed} />
           ))}

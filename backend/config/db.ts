@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/devcase");
+    await await mongoose.connect(process.env.DATABASE_URL);
     console.log("✅ MongoDB bağlantisi basarili");
   } catch (err) {
     console.error("❌ MongoDB bağlanti hatasi:", err);

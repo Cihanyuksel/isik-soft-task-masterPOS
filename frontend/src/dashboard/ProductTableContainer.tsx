@@ -21,7 +21,8 @@ const ProductTableContainer: React.FC = () => {
     category: null,
   });
 
-  const { data, isLoading, isError, refetch, isFetching } = useGetProductsQuery(currentPage);
+  const { data, isLoading, isError, refetch, isFetching } =
+    useGetProductsQuery(currentPage);
 
   const products = data?.data || [];
   const totalPages = data?.totalPages || 1;
@@ -31,12 +32,16 @@ const ProductTableContainer: React.FC = () => {
 
     if (filterState.searchTerm) {
       filtered = filtered.filter((product) =>
-        product.name.toLowerCase().includes(filterState.searchTerm.toLowerCase())
+        product.name
+          .toLowerCase()
+          .includes(filterState.searchTerm.toLowerCase())
       );
     }
 
     if (filterState.category) {
-      filtered = filtered.filter((product) => product.category === filterState.category);
+      filtered = filtered.filter(
+        (product) => product.category === filterState.category
+      );
     }
 
     if (filterState.sortOrder === "asc") {
