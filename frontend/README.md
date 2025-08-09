@@ -1,12 +1,36 @@
-# React + Vite
+# MasterPOS Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MasterPOS uygulamasının ön yüzü olarak React + Vite kullanılarak geliştirilmiştir.  
+Veri listeleme, sıralama ve responsive arayüzü özelliklerine sahiptir.
 
-Currently, two official plugins are available:
+## Kurulum ve Çalıştırma
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+´´´bash
+npm install  
+npm run dev
 
-## Expanding the ESLint configuration
+## Canlı Demo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://masterpos.vercel.app/
+
+## Özellikler
+
+- Sağlanan veri setinin liste görünümünde gösterilmesi
+- Filtreleme (artan/azalan)
+- Sayfalama (pagination) mekanizması ile tüm veriler tek seferde değil, ihtiyaç duyuldukça API’den çekilerek veri yükleme süresi ve bellek kullanımı optimize edilmiştir.
+- Tablo verilerinin Excel çıktısı alınabilmesi
+- Responsive arayüzü
+- Modüler React component yapısı
+- Basit ve anlaşılır UI arayüzü
+
+## Teknolojiler
+
+- React
+- Typescript
+- Vite
+- Tailwind CSS
+- RTK Query
+
+## Deployment
+
+Proje Vercel üzerinde deploy edilmiştir.
