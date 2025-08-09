@@ -3,11 +3,14 @@ import cors from "cors";
 import dotenv from "dotenv";
 import productRoutes from "./routes/product.route";
 
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-dotenv.config();
 
 app.use("/api/products", productRoutes);
 
