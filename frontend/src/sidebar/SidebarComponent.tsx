@@ -43,8 +43,24 @@ export const Sidebar: React.FC<SidebarProps> = ({ menuSectionsData }) => {
 
   const sidebarHeaderContent = !isCollapsed ? (
     <>
-      <div className="w-10 h-10 rounded-full bg-black"></div>
-      <div className="flex flex-col gap-1 dark:text-neutral-200">MasterPOS</div>
+      <div className="w-14 h-14 rounded-full bg-black relative overflow-hidden">
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%)",
+          }}
+        />
+        <img
+          src="./public/shopping-bag.png"
+          alt=""
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        />
+      </div>
+      <div className="flex flex-col dark:text-neutral-200 gap-0">
+        <span className=" font-bold text-2xl -mb-3">master</span>
+        <span className="text-indigo-600 font-bold text-xl">POS</span>
+      </div>{" "}
     </>
   ) : (
     <div className="w-10 h-10 rounded-full bg-black lg:hidden"></div>

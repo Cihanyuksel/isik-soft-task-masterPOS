@@ -72,7 +72,12 @@ const ProductTable: React.FC<ProductTableProps> = ({
     setFilterState((prev) => ({ ...prev, searchTerm: e.target.value }));
   };
 
-  if (isLoading) return <p className="p-100">Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center">
+        <div className="loader" />
+      </div>
+    );
   if (isError) return <p className="p-4 text-red-600">Failed to load</p>;
 
   return (

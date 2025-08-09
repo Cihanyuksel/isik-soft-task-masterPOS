@@ -3,7 +3,9 @@ import { ProductResponse } from "../types";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/api/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://products-api-9kbo.onrender.com/api",
+  }),
   endpoints: (builder) => ({
     getProducts: builder.query<ProductResponse, number>({
       query: (page = 1) => `products?page=${page}`,
