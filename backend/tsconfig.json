@@ -3,6 +3,7 @@
     "types": ["node"],
     "module": "commonjs",
     "target": "es2020",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "outDir": "dist"
   }
 }
